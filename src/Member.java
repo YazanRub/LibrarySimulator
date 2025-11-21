@@ -9,7 +9,7 @@
 
 public class Member {
 
-    // Private Attributes (Instance Variables)
+    // Attributes (Private as per UML)
     private int id;
     private String name;
     private int borrowedCount;
@@ -18,7 +18,7 @@ public class Member {
     private int numReturns;
     private double sessionFees;
 
-    // Public Static Attributes (Global/Shared Variables)
+    // Static Attributes (Public as per UML)
     public static double TotalRevenue = 0.0;
     public static int TotalViewBorrowed = 0;
     public static int TotalBorrows = 0;
@@ -29,98 +29,89 @@ public class Member {
         this.id = id;
         this.name = name;
         this.borrowedCount = borrowedCount;
-        
-        // Initialize counters to 0
         this.numViewBorrowed = 0;
         this.numBorrows = 0;
         this.numReturns = 0;
         this.sessionFees = 0.0;
     }
 
-    // Private Helper Methods
+    // Private helper method to check if user can borrow
     private boolean canBorrow() {
-        // Limit is 5 books
-        if (this.borrowedCount < 5) {
+        if (borrowedCount < 5) {
             return true;
         } else {
             return false;
         }
     }
 
+    // Private helper method to check if user can return
     private boolean canReturn() {
-        // Must have at least 1 book to return
-        if (this.borrowedCount >= 1) {
+        if (borrowedCount >= 1) {
             return true;
         } else {
             return false;
         }
     }
 
-    // Public Methods
+    // Prints the current borrowed count and updates stats
     public void viewBorrowedCount() {
-        System.out.println("You currently have " + this.borrowedCount + " book(s).");
-        
-        // Update stats
-        this.numViewBorrowed++;
+        System.out.println("The number of books you have is: " + borrowedCount);
+        numViewBorrowed++;
         TotalViewBorrowed++;
     }
 
+    // Simulates borrowing a book
     public boolean borrowOne() {
         if (canBorrow()) {
-            this.borrowedCount++;
-            
-            // Update local stats
-            this.numBorrows++;
-            this.sessionFees = this.sessionFees + 0.50;
-            
-            // Update global stats
+            borrowedCount++;
+            numBorrows++;
             TotalBorrows++;
-            TotalRevenue = TotalRevenue + 0.50;
-            
-            return true;
+            sessionFees += 0.50;
+            TotalRevenue += 0.50;
+            return true; // Successful borrow
         } else {
-            return false;
+            return false; // Failed to borrow
         }
     }
 
+    // Simulates returning a book
     public boolean returnOne() {
         if (canReturn()) {
-            this.borrowedCount--;
-            
-            // Update stats
-            this.numReturns++;
+            borrowedCount--;
+            numReturns++;
             TotalReturns++;
-            
-            return true;
+            return true; // Successful return
         } else {
-            return false;
+            return false; // Failed to return
         }
     }
 
+    // Prints session statistics for this specific member
     public void displayStatistics() {
-        System.out.println("--- Statistics for " + this.name + " ---");
-        System.out.println("ID: " + this.id);
-        System.out.println("Current Books: " + this.borrowedCount);
-        System.out.println("Times Borrowed: " + this.numBorrows);
-        System.out.println("Times Returned: " + this.numReturns);
-        System.out.println("Fees: " + this.sessionFees + " Credits");
-        System.out.println("---------------------------");
+        System.out.println("This is the Session Summary: ");
+        System.out.println("Number of books borrowed: " + numBorrows);
+        System.out.println("Number of books returned: " + numReturns);
+        System.out.printf("Total fees incurred during the session: %.2f \n", sessionFees);
     }
 
+    // Resets the session statistics to zero
     public void reset() {
-        // Reset global statistics
-        TotalRevenue = 0;
-        TotalViewBorrowed = 0;
-        TotalBorrows = 0;
-        TotalReturns = 0;
+        numViewBorrowed = 0;
+        numBorrows = 0;
+        numReturns = 0;
+        sessionFees = 0.0;
     }
 
-    // Getters (as needed)
+    // Getters needed for the Main class menu
     public int getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getBorrowedCount() {
+        return borrowedCount;
     }
 }
