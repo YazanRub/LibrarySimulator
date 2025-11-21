@@ -1,3 +1,12 @@
+/*
+ * Group Members:
+ * 1. [Saif Almajel] - [446100046]
+ * 2. [Abdulrahman Aldawood] - [446102850]
+ * 3. [Yazan Alrubian] - [446102223]
+ *
+ * GitHub Repository: [Link Here]
+ */
+
 import java.util.Scanner;
 
 public class LibrarySimulator {
