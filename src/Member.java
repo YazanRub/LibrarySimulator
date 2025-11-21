@@ -4,7 +4,7 @@
  * 2. [Abdulrahman Aldawood] - [446102850]
  * 3. [Yazan Alrubian] - [446102223]
  *
- * GitHub Repository: [Link Here]
+ * 
  */
 
 public class Member {
