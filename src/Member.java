@@ -9,7 +9,7 @@
 
 public class Member {
 
-    // Attributes (Private as per UML)
+
     private int id;
     private String name;
     private int borrowedCount;
@@ -18,7 +18,7 @@ public class Member {
     private int numReturns;
     private double sessionFees;
 
-    // Static Attributes (Public as per UML)
+
     public static double TotalRevenue = 0.0;
     public static int TotalViewBorrowed = 0;
     public static int TotalBorrows = 0;
@@ -68,9 +68,9 @@ public class Member {
             TotalBorrows++;
             sessionFees += 0.50;
             TotalRevenue += 0.50;
-            return true; // Successful borrow
+            return true;
         } else {
-            return false; // Failed to borrow
+            return false;
         }
     }
 
@@ -80,13 +80,13 @@ public class Member {
             borrowedCount--;
             numReturns++;
             TotalReturns++;
-            return true; // Successful return
+            return true;
         } else {
-            return false; // Failed to return
+            return false;
         }
     }
 
-    // Prints session statistics for this specific member
+    // Prints statistics for the specific member
     public void displayStatistics() {
         System.out.println("This is the Session Summary: ");
         System.out.println("Number of books borrowed: " + numBorrows);
@@ -94,7 +94,7 @@ public class Member {
         System.out.printf("Total fees incurred during the session: %.2f \n", sessionFees);
     }
 
-    // Resets the session statistics to zero
+    // Resets the statistics to zero
     public void reset() {
         numViewBorrowed = 0;
         numBorrows = 0;
