@@ -45,8 +45,7 @@ public class LibrarySimulator {
 
                 int userChoice = input.nextInt();
 
-                // We select the current member to work with to avoid rewriting code 3 times
-                // However, for beginner level, I will use if/else blocks as requested
+
 
                 // === ACCOUNT 1 ===
                 if (userChoice == 1) {
@@ -74,7 +73,7 @@ public class LibrarySimulator {
                                     System.out.println("3- The Power of Habit");
                                     System.out.println("4- The Psychology of Money");
                                     System.out.println("5- Start with Why");
-                                    int bookChoice = input.nextInt(); // Just to simulate selection
+                                    int bookChoice = input.nextInt();
                                     System.out.println("Book Borrowed Successfully.");
                                 } else {
                                     System.out.println("Cannot borrow more than 5 books.");
